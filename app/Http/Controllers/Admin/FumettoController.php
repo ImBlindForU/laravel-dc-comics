@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fumetto;
 use Illuminate\Http\Request;
 
 class FumettoController extends Controller
@@ -14,7 +15,8 @@ class FumettoController extends Controller
      */
     public function index()
     {
-        //
+        $fumettos = Fumetto::all();
+        return view('fumetti.index',compact('fumettos'));
     }
 
     /**
@@ -46,7 +48,8 @@ class FumettoController extends Controller
      */
     public function show($id)
     {
-        //
+        $comics = Fumetto::findorFail($id);
+        return view('Fumetti.show',compact('comics'));
     }
 
     /**
