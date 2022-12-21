@@ -11,6 +11,9 @@
     </section>
     <section>
         <div class="container mt-4">
+            <div class="text-end">
+                <a class="btn btn-primary" href="{{ route('Fumettis.create') }}">Inserisci un nuovo fumetto</a>
+            </div>
             <table>
                 <thead>
                     <tr>

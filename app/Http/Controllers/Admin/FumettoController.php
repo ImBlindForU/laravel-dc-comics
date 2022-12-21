@@ -26,7 +26,7 @@ class FumettoController extends Controller
      */
     public function create()
     {
-        //
+        return view('fumetti.create');
     }
 
     /**
@@ -37,7 +37,10 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $comic = new Fumetto();
+        $comic->fill($data);
+        $comic->save();
     }
 
     /**
