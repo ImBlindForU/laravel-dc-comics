@@ -13,6 +13,8 @@
         <div class="container mt-4">
             <div class="text-end">
                 <a class="btn btn-primary" href="{{ route('Fumettis.create') }}">Inserisci un nuovo fumetto</a>
+
+
             </div>
             <table>
                 <thead>
@@ -31,7 +33,16 @@
                             <td>{{ $comics->series }}</td>
                             <td>{{ $comics->type }}</td>
                             <td>{{ $comics->price }}</td>
-                            <td><button><a href="{{ route('Fumettis.show', $comics->id)}}">Info </a> </button></td>
+                            <td><button class="btn"><a href="{{ route('Fumettis.show', $comics->id)}}">Info </a> </button></td>
+                            <td><button class="btn "><a href="{{ route('Fumettis.edit', $comics->id)}}">Modifica </a> </button></td>
+                            <td>
+                                <form  action="{{ route('Fumettis.destroy', $comics->id)}}"  method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn warning"><a>Delete </a> </button>
+                                </form>
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>

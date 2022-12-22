@@ -61,9 +61,9 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Fumetto $comics)
     {
-        //
+        return view('Fumetti.edit',compact('comics'));
     }
 
     /**
@@ -73,9 +73,11 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Fumetto $comics)
     {
-        //
+        $formData=$request->all();
+        $comics->update($formData);
+        return redirect()->route('Fumettis.show', $comics->id);
     }
 
     /**
@@ -84,8 +86,9 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fumetto $comics)
     {
-        //
+        $comics->delete();
+        return redirect()->route('Fumettis.index');
     }
 }
