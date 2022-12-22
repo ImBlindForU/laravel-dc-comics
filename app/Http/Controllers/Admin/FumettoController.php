@@ -61,8 +61,9 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fumetto $comics)
-    {
+    public function edit($id)
+    {   
+        $comics =Fumetto::find($id);
         return view('Fumetti.edit',compact('comics'));
     }
 
@@ -86,8 +87,10 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fumetto $comics)
+    public function destroy( $id)
     {
+        // dd($comics);
+        $comics =Fumetto::find($id);
         $comics->delete();
         return redirect()->route('Fumettis.index');
     }
